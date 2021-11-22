@@ -8,22 +8,26 @@
 import UIKit
 
 class PictureDetailsVC: UIViewController {
-
+    @IBOutlet weak var resultNameLabel: UILabel!
+    @IBOutlet weak var resultImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        backButtonAdded()
+        fixImageViewAndLabelField()
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    fileprivate func backButtonAdded() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Photos", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goBack))
     }
-    */
-
+    @objc func goBack(){
+        self.dismiss(animated: true, completion: nil)
+    }
+    func fixImageViewAndLabelField() {
+        resultNameLabel.lineBreakMode = .byWordWrapping
+        resultNameLabel.numberOfLines = 0
+        resultImageView.layer.cornerRadius = 50
+        resultImageView.sd_setImage(with: URL(string: Photos.selectedPhotoUrl))
+        resultNameLabel.text = Photos.selectedPhotoname
+    }
 }

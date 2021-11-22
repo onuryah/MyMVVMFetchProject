@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct PhotoUrl{
+    let photourl = URL(string: "https://jsonplaceholder.typicode.com/photos")
+}

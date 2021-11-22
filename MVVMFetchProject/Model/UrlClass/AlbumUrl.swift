@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct AlbumUrl{
+    let albumUrl = URL(string: "https://jsonplaceholder.typicode.com/albums")
+}

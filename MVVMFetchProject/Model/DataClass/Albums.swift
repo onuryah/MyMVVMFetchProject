@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct Albums {
+ 
+    let id : Int
+    let title  : String
+    static var selectedId = Int()
+}
