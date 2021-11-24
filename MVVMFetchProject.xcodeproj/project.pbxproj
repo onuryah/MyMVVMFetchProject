@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A4BE948274EBE350048D7BE /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4BE947274EBE350048D7BE /* AlbumViewModel.swift */; };
+		4A4BE94A274EC6A90048D7BE /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4BE949274EC6A90048D7BE /* PhotoViewModel.swift */; };
 		4A7B1810274BEA0000F9C595 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7B180F274BEA0000F9C595 /* AppDelegate.swift */; };
 		4A7B1812274BEA0000F9C595 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7B1811274BEA0000F9C595 /* SceneDelegate.swift */; };
 		4A7B1817274BEA0000F9C595 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A7B1815274BEA0000F9C595 /* Main.storyboard */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A4BE947274EBE350048D7BE /* AlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
+		4A4BE949274EC6A90048D7BE /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 		4A7B180C274BEA0000F9C595 /* MVVMFetchProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMFetchProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A7B180F274BEA0000F9C595 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A7B1811274BEA0000F9C595 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +72,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A4BE946274EBD8B0048D7BE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4A4BE947274EBE350048D7BE /* AlbumViewModel.swift */,
+				4A4BE949274EC6A90048D7BE /* PhotoViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		4A7B1803274BEA0000F9C595 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +102,7 @@
 		4A7B180E274BEA0000F9C595 /* MVVMFetchProject */ = {
 			isa = PBXGroup;
 			children = (
+				4A4BE946274EBD8B0048D7BE /* ViewModel */,
 				4A7B1826274BEA3000F9C595 /* Delegates */,
 				4A7B1823274BEA0C00F9C595 /* Model */,
 				4A7B1824274BEA1C00F9C595 /* Controller */,
@@ -160,8 +174,8 @@
 		4A7B1829274BEAC100F9C595 /* DataClass */ = {
 			isa = PBXGroup;
 			children = (
-				4A7B1841274BF48A00F9C595 /* Albums.swift */,
 				4A7B1843274BF49200F9C595 /* Photos.swift */,
+				4A7B1841274BF48A00F9C595 /* Albums.swift */,
 			);
 			path = DataClass;
 			sourceTree = "<group>";
@@ -207,7 +221,6 @@
 				EF26D5ACEF5CAA858E7A0A7C /* Pods-MVVMFetchProject.debug.xcconfig */,
 				996F468D023D7D73F1F10695 /* Pods-MVVMFetchProject.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -331,7 +344,9 @@
 				4A7B1844274BF49200F9C595 /* Photos.swift in Sources */,
 				4A7B1830274BEBDC00F9C595 /* ListVC.swift in Sources */,
 				4A7B1810274BEA0000F9C595 /* AppDelegate.swift in Sources */,
+				4A4BE948274EBE350048D7BE /* AlbumViewModel.swift in Sources */,
 				4A7B1848274BF4C600F9C595 /* AlbumUrl.swift in Sources */,
+				4A4BE94A274EC6A90048D7BE /* PhotoViewModel.swift in Sources */,
 				4A7B1840274BF47000F9C595 /* FetchDataForAlbum.swift in Sources */,
 				4A7B1812274BEA0000F9C595 /* SceneDelegate.swift in Sources */,
 				4A7B1839274BED3E00F9C595 /* PhotosCell.swift in Sources */,

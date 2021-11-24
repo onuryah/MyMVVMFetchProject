@@ -9,7 +9,7 @@ import UIKit
 
 class ListVC: UIViewController {
     @IBOutlet weak var albumNamesTableView: UITableView!
-    var albumArray = [Albums]()
+    private var albumArray : AlbumListViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +19,8 @@ class ListVC: UIViewController {
     }
     fileprivate func fetchData(){
         FetchAlbum().getData { album in
-            if album != nil {
-                self.albumArray = album!
+            if let album = album {
+                self.albumArray = AlbumListViewModel(albumList: album)
             }else{
                 self.makeAlert()
             }
@@ -29,17 +29,17 @@ class ListVC: UIViewController {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return albumArray.count
+        return self.albumArray == nil ? 0 : self.albumArray.numberOfRowsInSection()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = albumNamesTableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ListCell
-        cell.albumNamesLabelField.text = albumArray[indexPath.row].title.capitalizingFirstLetter()
+        cell.albumNamesLabelField.text = self.albumArray.albumAtIndex(indexPath.row).title.capitalizingFirstLetter()
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Albums.selectedId = albumArray[indexPath.row].id
+        Albums.selectedId = self.albumArray.albumAtIndex(indexPath.row).id
         performSegue(withIdentifier: "toAlbumDetailsVC", sender: nil)
     }
 

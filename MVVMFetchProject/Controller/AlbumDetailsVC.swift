@@ -10,7 +10,7 @@ import SDWebImage
 
 class AlbumDetailsVC: UIViewController {
     @IBOutlet weak var albumDetailsCollectionView: UICollectionView!
-    private var photoArray = [Photos]()
+    private var photoArray : PhotoListViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +22,8 @@ class AlbumDetailsVC: UIViewController {
     }
     fileprivate func fetchPhotoDatas() {
         FetchPhoto().getData { photos in
-            if photos != nil {
-                self.photoArray = photos!
+            if let photos = photos {
+                self.photoArray = PhotoListViewModel(photoList: photos)
             }else {
                 self.makeAlert()
             }
@@ -32,7 +32,7 @@ class AlbumDetailsVC: UIViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photoArray.count
+        return self.photoArray == nil ? 0 : self.photoArray.numberOfRowsInSection()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -46,17 +46,16 @@ class AlbumDetailsVC: UIViewController {
         performSegue(withIdentifier: "toPictureDetailsVC", sender: nil)
     }
 
-
 }
 extension AlbumDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     fileprivate func itemsInCell(cell: PhotosCell, indexPath: IndexPath) {
-        cell.photoNameLabelField.text = photoArray[indexPath.row].title.capitalizingFirstLetter()
-        cell.photosImageView.sd_setImage(with: URL(string: photoArray[indexPath.row].thumbnailUrl))
+        cell.photoNameLabelField.text = photoArray.photoAtIndex(indexPath.row).title.capitalizingFirstLetter()
+        cell.photosImageView.sd_setImage(with: URL(string: photoArray.photoAtIndex(indexPath.row).thumbnailUrl))
     }
     
     fileprivate func selectedItemAt(indexPath : IndexPath) {
-        Photos.selectedPhotoUrl = photoArray[indexPath.row].photoUrl
-        Photos.selectedPhotoname = photoArray[indexPath.row].title.capitalizingFirstLetter()
+        Photos.selectedPhotoUrl = photoArray.photoAtIndex(indexPath.row).photoUrl
+        Photos.selectedPhotoname = photoArray.photoAtIndex(indexPath.row).title.capitalizingFirstLetter()
     }
     
     @objc func goBack(){

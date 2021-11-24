@@ -15,7 +15,6 @@ class PictureDetailsVC: UIViewController {
         super.viewDidLoad()
         backButtonAdded()
         fixImageViewAndLabelField()
-        
     }
     fileprivate func backButtonAdded() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Photos", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goBack))
